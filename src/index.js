@@ -11,8 +11,10 @@ class Slider {
 
   nextImage() {
     this.nextButton.addEventListener('click', () => {
+      this.currentChild.classList.remove('animation');
       this.currentChild = this.currentChild.nextElementSibling;
       this.hideOrShowNextPrevButtons();
+      this.currentChild.classList.add('animation');
       this.currentChild.scrollIntoView();
     });
   }
@@ -22,8 +24,10 @@ class Slider {
       this.previousButton.style.visibility = 'hidden';
     }
     this.previousButton.addEventListener('click', () => {
+      this.currentChild.classList.remove('animation');
       this.currentChild = this.currentChild.previousElementSibling;
       this.hideOrShowNextPrevButtons();
+      this.currentChild.classList.add('animation');
       this.currentChild.scrollIntoView();
     });
   }
@@ -43,5 +47,6 @@ class Slider {
 }
 
 const mySlider = new Slider();
+mySlider.currentChild.classList.add('animation');
 mySlider.nextImage();
 mySlider.prevImage();
